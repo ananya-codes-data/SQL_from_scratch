@@ -1,4 +1,20 @@
-USE MyDatabase;
+/* SELECT Query
+
+Contents:
+1. SELECT ALL COLUMNS
+2. SELECT SPECIFIC COLUMNS
+3. FROM
+4. WHERE
+5. GROUP BY
+6. HAVING
+7. ORDER BY
+8. LIMIT
+9. DISTINCT
+10. OFFSET
+11. TOP
+12. Executing ALL Clause
+13. Executing Multiple Queries
+14. Using Static Data */
 
 -- SELECT & FROM Clause (All)
 

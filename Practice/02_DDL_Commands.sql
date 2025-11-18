@@ -1,3 +1,11 @@
+/* DDL Commands
+Data Definition Language
+
+Contents:
+1. CREATE
+2. ALTER
+3. DROP */
+
 -- CREATE
 
 /* Create a new table called persons 
