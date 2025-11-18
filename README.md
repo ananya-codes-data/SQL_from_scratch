@@ -15,10 +15,10 @@ I will keep updating as I progress.
 Right now I am using MySQL as the DBMS to learn and practice basic SQL queries.
 
 ## Folder Structure
-### **Practice/**
+### **Practice**
 Contains:
 <br>
 Questions + answers (I write them to practice and run the queries).
 
-### **Resources/**
+### **Resources**
 For now this folder contains the dataset that I am using while learning SQL. You can find all the resources from the link I mentioned above.
