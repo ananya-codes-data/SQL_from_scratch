@@ -29,32 +29,38 @@ Contents:
 -- Retrieve all customers from Germany
 SELECT *
 FROM customers
-WHERE country = 'Germany';
+WHERE 
+    country = 'Germany';
 
 -- Retrieve all customers who are not from Germany
 SELECT *
 FROM customers
-WHERE country <> 'Germany';
+WHERE 
+    country <> 'Germany';
 
 -- Retrieve all customers with a score greater than 500
 SELECT *
 FROM customers
-WHERE score > 500;
+WHERE 
+    score > 500;
 
 -- Retrieve all customers with a score of 500 or more
 SELECT *
 FROM customers
-WHERE score >= 500;
+WHERE 
+    score >= 500;
 
 -- Retrieve all customers with a score less than 500
 SELECT *
 FROM customers
-WHERE score < 500;
+WHERE 
+    score < 500;
 
 -- Retrieve all customers with a score of 500 or less
 SELECT *
 FROM customers
-WHERE score <= 500;
+WHERE 
+    score <= 500;
 
 
 -- LOGICAL OPERATORS
@@ -65,7 +71,7 @@ SELECT *
 FROM customers
 WHERE
 	country = 'USA'
-    AND
+    AND 
     score > 500;
 
 -- Retrieve all customers who are either from the USA or have a score greater than 500
@@ -73,25 +79,28 @@ SELECT *
 FROM customers
 WHERE
 	country = 'USA'
-    OR
+    OR 
     score > 500;
     
 -- Retrieve all customers with a score not less than 500
 SELECT *
 FROM customers
-WHERE NOT score < 500;
+WHERE 
+    NOT score < 500;
 
 /* Alternative
 SELECT *
 FROM customers
-WHERE score >= 500; */
+WHERE 
+    score >= 500; */
 
 
 -- RANGE FILTERING - BETWEEN
 -- Retrieve all customers whose score falls in the range between 100 and 500
 SELECT * 
 FROM customers
-WHERE score BETWEEN 100 AND 500;
+WHERE 
+    score BETWEEN 100 AND 500;
 
 -- Alternative method (Equivalent to BETWEEN)
 SELECT *
@@ -115,29 +124,34 @@ The above query is a way you can have the result of the above question */
 
 SELECT *
 FROM customers
-WHERE country IN ('Germany', 'USA');
+WHERE 
+    country IN ('Germany', 'USA');
  
  
  -- PATTERN MATCHING - LIKE
  -- Find all customers whose first name starts with 'M'
  SELECT *
  FROM customers
- WHERE first_name LIKE 'M%';
+ WHERE 
+    first_name LIKE 'M%';
  
  -- Find all customers whose first name ends with 'n'
  SELECT *
  FROM customers
- WHERE first_name LIKE '%n';
+ WHERE 
+    first_name LIKE '%n';
  
  -- Find all customers whose first name contains 'r'
  SELECT *
  FROM customers
- WHERE first_name LIKE '%r%';
+ WHERE 
+    first_name LIKE '%r%';
  
  -- Find all customers whose first name has 'r' in the third position
  SELECT *
  FROM customers
- WHERE first_name LIKE '__r%';
+ WHERE 
+    first_name LIKE '__r%';
  
  /* For the LIKE we use it with 2 symbols '%' and '_' where '%' means it can have 0, 1, anything
  but '_' means exactly 1 */

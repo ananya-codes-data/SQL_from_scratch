@@ -42,19 +42,22 @@ FROM customers;
 -- Retrieve customers with a score not equal to 0
 SELECT *
 FROM customers
-WHERE score != 0;
+WHERE 
+	score != 0;
 
 -- Retrieve customers from Germany
 SELECT *
 FROM customers
-WHERE country = 'Germany';
+WHERE 
+	country = 'Germany';
 
 -- Retrieve the name and country of customers from Germany
 SELECT
 	first_name,
 	country
 FROM customers
-WHERE country = 'Germany';
+WHERE 
+	country = 'Germany';
 
 
 -- ORDER BY Clause
@@ -63,20 +66,23 @@ WHERE country = 'Germany';
 sort the results by the highest score first */
 SELECT *
 FROM customers
-ORDER BY score DESC;
+ORDER BY 
+	score DESC;
   
 /* Retrieve all customers and 
 sort the results by the lowest score first */
 SELECT *
 FROM customers
-ORDER BY score ASC;
+ORDER BY 
+	score ASC;
    
 -- If not specified as such then the default is ascending
 /* Retrieve all customers and 
 sort the results by the country */
 SELECT *
 FROM customers
-ORDER BY country ASC;
+ORDER BY 
+	country ASC;
    
 
 -- (Nested) ORDER BY
@@ -85,7 +91,9 @@ ORDER BY country ASC;
 sort the results by the country and then by the highest score */
 SELECT *
 FROM customers
-ORDER BY country ASC, score DESC;
+ORDER BY 
+	country ASC, 
+	score DESC;
    
 /* Retrieve the name, country, and score of customers 
 whose score is not equal to 0
@@ -95,8 +103,10 @@ SELECT
 	country,
 	score
 FROM customers
-WHERE score != 0
-ORDER BY score DESC;
+WHERE 
+	score != 0
+ORDER BY 
+	score DESC;
 
 
 -- GROUP BY Clause
@@ -106,7 +116,8 @@ SELECT
 	country,
 	SUM(score) AS total_score
 FROM customers
-GROUP BY country;
+GROUP BY 
+	country;
 
 -- Find the total score and total number of customers for each country
 SELECT
@@ -114,7 +125,8 @@ SELECT
 	SUM(score) AS total_score,
     COUNT(id) AS total_customers
 FROM customers
-GROUP BY country;
+GROUP BY 
+	country;
 
 
 -- HAVING Clause
@@ -125,8 +137,10 @@ SELECT
 	country,
     AVG(score) AS average_score
 FROM customers
-GROUP BY country
-HAVING AVG(score) > 430;
+GROUP BY 
+	country
+HAVING 
+	AVG(score) > 430;
 
 /* Find the average score for each country
    considering only customers with a score not equal to 0
@@ -135,9 +149,12 @@ SELECT
 	country,
     AVG(score) AS avg_score
 FROM customers
-WHERE score != 0
-GROUP BY country
-HAVING AVG(score) > 430;
+WHERE 
+	score != 0
+GROUP BY 
+	country
+HAVING 
+	AVG(score) > 430;
 
 
 -- DISTINCT Clause
@@ -157,19 +174,22 @@ LIMIT 3;
 -- Retrieve the Top 3 Customers with the Highest Scores
 SELECT *
 FROM customers
-ORDER BY score DESC
+ORDER BY 
+	score DESC
 LIMIT 3;
 
 -- Retrieve the Lowest 2 Customers based on the score
 SELECT *
 FROM customers
-ORDER BY score ASC
+ORDER BY 
+	score ASC
 LIMIT 2;
 
 -- Get the Two Most Recent Orders
 SELECT *
 FROM orders
-ORDER BY order_date DESC
+ORDER BY 
+	order_date DESC
 LIMIT 2;
 
 
@@ -183,10 +203,14 @@ SELECT
 	country,
     AVG(score) AS avg_score
 FROM customers
-WHERE score != 0
-GROUP BY country
-HAVING AVG(score) > 430
-ORDER BY AVG(score) DESC;
+WHERE 
+	score != 0
+GROUP BY 
+	country
+HAVING 
+	AVG(score) > 430
+ORDER BY 
+	AVG(score) DESC;
 
 -- Always remember to put a ; after each query gets over
 
@@ -215,7 +239,8 @@ FROM customers;
 -- If we highlight a part of the query and then execute it then the result will be different
 SELECT *
 FROM customers
-WHERE country = 'Germany';
+WHERE 
+	country = 'Germany';
 
 SELECT *
 FROM orders;

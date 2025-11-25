@@ -32,11 +32,13 @@ and then delete the particular values for the given column
 
 SELECT *
 FROM customers
-WHERE id = 8;
+WHERE 
+    id = 8;
 
 DELETE
 FROM customers
-WHERE id =8; */
+WHERE 
+    id =8; */
 
 
 -- Incorrect data type in values
@@ -74,11 +76,13 @@ VALUES
     
 SELECT *
 FROM customers
-WHERE id = 11;
+WHERE 
+    id = 11;
 
 DELETE
 FROM customers
-WHERE id = 11;
+WHERE 
+    id = 11;
     
 /* You can specify in which column you want to put the values but the primary key can never be null
 orelse after execution the it will show an error so the primary key has to contain some value */
@@ -105,28 +109,34 @@ FROM persons;
 -- Change the score of customer with ID 6 to 0
 UPDATE customers
 SET score = 0
-WHERE id = 6;
+WHERE 
+    id = 6;
 
 /* You should run this query to avoid updating wrong data
 SELECT *
 FROM customers
-WHERE id = 6; */
+WHERE 
+    id = 6; */
 
 -- Change the score of customer with ID 10 to 0 and update the country to 'UK'
 UPDATE customers
 SET
 	score = 0,
     country = 'UK'
-WHERE id = 10;
+WHERE 
+    id = 10;
 
 /* SELECT *
 FROM customers
-WHERE id = 10; */
+WHERE 
+    id = 10; */
 
 -- Update all customers with a NULL score by setting their score to 0
 UPDATE customers
-SET score = 0
-WHERE score IS NULL;
+SET 
+    score = 0
+WHERE 
+    score IS NULL;
 
 /* During update it is wise to use the primary key with the where condition
 and in the above query the column mentioned is not the primary key which is why
@@ -149,7 +159,8 @@ I try to run the same UPDATE query then the error code 1175 will be showing agai
 -- Verify the update
 SELECT *
 FROM customers
-WHERE score IS NULL;
+WHERE 
+    score IS NULL;
 
 
 -- DELETE
@@ -157,12 +168,14 @@ WHERE score IS NULL;
 -- Select customers with an ID greater than 5 before deleting
 SELECT *
 FROM customers
-WHERE id > 5;
+WHERE 
+    id > 5;
 
 -- Delete all customers with an ID greater than 5
 DELETE
 FROM customers
-WHERE id > 5;
+WHERE 
+    id > 5;
 
 -- Delete all data from the persons table
 DELETE
