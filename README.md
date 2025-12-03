@@ -12,13 +12,15 @@ For easy access I have a few resources in Resources folder.
 <br>
 I will keep updating as I progress.
 <br>
-Right now I am using MySQL as the DBMS to learn and practice basic SQL queries and for advanced queries I will be using postgreSQL.
+Right now I am using PostgreSQL as the RDBMS to learn and practice SQL starting from basic SQL queries to advance queries.
 
 ## Folder Structure
 ### **Practice**
 Contains:
 <br>
 Questions + answers (I write them to practice and run the queries).
+<br>
+I have also included a few explanations for my understanding.
 
 ### **Resources**
 For now this folder contains the datasets that I am using while learning SQL. It contains two datasets for MySQL and two for postgreSQL. You can find all the resources from the link I mentioned above.
