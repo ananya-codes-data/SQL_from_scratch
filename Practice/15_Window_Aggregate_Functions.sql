@@ -29,24 +29,56 @@ FROM orders;
 SELECT
 	*,
 	COUNT(*) OVER() AS total_customers,
+	COUNT(score) OVER() AS total_scores,
+	COUNT(country) OVER() AS total_countries
 FROM customers;
 
 /* TASK 3:
    Check whether the table 'OrdersArchive' contains any duplicate rows */
-
+SELECT
+*
+FROM (
+	SELECT
+		orderid,
+		COUNT(*) OVER(
+			PARTITION BY
+				orderid     -- Divides the data by the primary key
+		) AS check_pk
+	FROM ordersarchive
+) AS t
+WHERE 
+	check_pk > 1
 
 
 -- SQL WINDOW AGGREGATION | SUM
 
-
 /* TASK 4:
    - Find the Total Sales Across All Orders 
    - Find the Total Sales for Each Product */
-
+SELECT
+	orderid,
+	orderdate,
+	productid,
+	sales,
+	SUM(sales) OVER(
+		PARTITION BY
+			productid
+	) AS sales_by_product,
+	SUM(sales) OVER() AS total_sales
+FROM orders;
 
 /* TASK 5:
    Find the Percentage Contribution of Each Product's Sales to the Total Sales */
-
+SELECT
+	orderid,
+	productid,
+	sales,
+	SUM(sales) OVER() AS total_sales,
+	ROUND(
+		CAST(sales AS numeric) / SUM(sales) OVER() * 100,
+		2
+	) AS percentage_of_total
+FROM orders;
 
 
 -- SQL WINDOW AGGREGATION | AVG
@@ -54,11 +86,33 @@ FROM customers;
 /* TASK 6:
    - Find the Average Sales Across All Orders 
    - Find the Average Sales for Each Product */
-
+SELECT
+	orderid,
+	orderdate,
+	sales,
+	ROUND(
+		AVG(sales) OVER(),
+		2
+	) AS avg_sales,
+	ROUND(
+		AVG(sales) OVER(
+			PARTITION BY
+			productid
+		),
+		2
+	) AS avg_by_product
+FROM orders;
 
 /* TASK 7:
    Find the Average Scores of Customers */
-
+SELECT
+	customerid,
+	score,
+	ROUND(
+		AVG(score) OVER(),
+		2
+	) AS avg_score
+FROM customers;
 
 /* TASK 8:
    Find all orders where Sales exceed the average Sales across all orders */
