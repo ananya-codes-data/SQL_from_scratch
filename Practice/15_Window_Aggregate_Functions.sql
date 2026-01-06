@@ -15,8 +15,8 @@ SELECT
 	orderid,
 	orderdate,
 	customerid,
-	COUNT(*) OVER() AS total_orders,
-	COUNT(*) OVER(
+	COUNT(*) OVER () AS total_orders,
+	COUNT(*) OVER (
 		PARTITION BY
 			customerid
 	) AS orders_by_customers
@@ -28,9 +28,9 @@ FROM orders;
    - Find the Total Number of Countries */
 SELECT
 	*,
-	COUNT(*) OVER() AS total_customers,
-	COUNT(score) OVER() AS total_scores,
-	COUNT(country) OVER() AS total_countries
+	COUNT(*) OVER () AS total_customers,
+	COUNT(score) OVER () AS total_scores,
+	COUNT(country) OVER () AS total_countries
 FROM customers;
 
 /* TASK 3:
@@ -40,7 +40,7 @@ SELECT
 FROM (
 	SELECT
 		orderid,
-		COUNT(*) OVER(
+		COUNT(*) OVER (
 			PARTITION BY
 				orderid     -- Divides the data by the primary key
 		) AS check_pk
@@ -60,11 +60,11 @@ SELECT
 	orderdate,
 	productid,
 	sales,
-	SUM(sales) OVER(
+	SUM(sales) OVER (
 		PARTITION BY
 			productid
 	) AS sales_by_product,
-	SUM(sales) OVER() AS total_sales
+	SUM(sales) OVER () AS total_sales
 FROM orders;
 
 /* TASK 5:
@@ -73,9 +73,9 @@ SELECT
 	orderid,
 	productid,
 	sales,
-	SUM(sales) OVER() AS total_sales,
+	SUM(sales) OVER () AS total_sales,
 	ROUND(
-		CAST(sales AS numeric) / SUM(sales) OVER() * 100,
+		CAST(sales AS numeric) / SUM(sales) OVER () * 100,
 		2
 	) AS percentage_of_total
 FROM orders;
@@ -91,11 +91,11 @@ SELECT
 	orderdate,
 	sales,
 	ROUND(
-		AVG(sales) OVER(),
+		AVG(sales) OVER (),
 		2
 	) AS avg_sales,
 	ROUND(
-		AVG(sales) OVER(
+		AVG(sales) OVER (
 			PARTITION BY
 			productid
 		),
@@ -111,14 +111,14 @@ SELECT
 	score,
 	COALESCE(score, 0) AS customer_score,
 	ROUND(
-		AVG(score) OVER(),
+		AVG(score) OVER (),
 		0
 	) AS avg_score,
 	ROUND(
 		AVG(
 			COALESCE(score, 0)
 			)
-		OVER(),
+		OVER (),
 		0
 	) AS avg_score_without_null
 FROM customers;
@@ -133,7 +133,7 @@ FROM(
 		productid,
 		sales,
 		ROUND(
-			AVG(sales) OVER(),
+			AVG(sales) OVER (),
 			0
 		) AS avg_sales
 	FROM orders
@@ -151,8 +151,8 @@ SELECT
 	orderid,
 	orderdate,
 	sales,
-	MAX(sales) OVER() AS highest_sales,
-	MIN(sales) OVER() AS lowest_sales
+	MAX(sales) OVER () AS highest_sales,
+	MIN(sales) OVER () AS lowest_sales
 FROM orders;
 
 /* TASK 10:
@@ -166,7 +166,7 @@ SELECT
 		PARTITION BY
 			productid
 	) AS highest_sales_by_product,
-	MIN(sales) OVER(
+	MIN(sales) OVER (
 		PARTITION BY
 			productid
 	) AS lowest_sales_by_product
@@ -191,10 +191,10 @@ SELECT
 	orderid,
 	orderdate,
 	sales,
-	MAX(sales) OVER() AS highest_sales,
-	MIN(sales) OVER() AS lowest_sales,
-	(MAX(sales) OVER() - sales) AS deviation_from_max,
-	(sales - MIN(sales) OVER()) AS deviation_from_min
+	MAX(sales) OVER () AS highest_sales,
+	MIN(sales) OVER () AS lowest_sales,
+	(MAX(sales) OVER () - sales) AS deviation_from_max,
+	(sales - MIN(sales) OVER ()) AS deviation_from_min
 FROM orders;
 
 
@@ -209,14 +209,14 @@ SELECT
 	orderdate,
 	sales,
 	ROUND(
-		AVG(sales) OVER(
+		AVG(sales) OVER (
 			PARTITION BY
 				productid
 		),
 		2
 	) AS avg_by_product,
 	ROUND(
-		AVG(sales) OVER(
+		AVG(sales) OVER (
 			PARTITION BY
 				productid
 			ORDER BY
@@ -235,7 +235,7 @@ SELECT
 	orderdate,
 	sales,
 	ROUND(
-		AVG(sales) OVER(
+		AVG(sales) OVER (
 			PARTITION BY
 				productid
 			ORDER BY

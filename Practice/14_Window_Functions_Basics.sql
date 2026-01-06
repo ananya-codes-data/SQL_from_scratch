@@ -35,7 +35,7 @@ GROUP BY
 SELECT
 	orderid,
 	orderdate,
-	SUM(sales) OVER() AS total_sales
+	SUM(sales) OVER () AS total_sales
 FROM orders;
 
 
@@ -48,7 +48,7 @@ SELECT
 	orderid,
 	orderdate,
 	productid,
-	SUM(sales) OVER(
+	SUM(sales) OVER (
 		PARTITION BY
 			productid
 	) AS total_sales_by_product
@@ -64,12 +64,12 @@ SELECT
 	productid,
 	orderstatus,
 	sales,
-	SUM(sales) OVER() AS total_sales,
-	SUM(sales) OVER(
+	SUM(sales) OVER () AS total_sales,
+	SUM(sales) OVER (
 		PARTITION BY
 			productid
 	) AS sales_by_product,
-	SUM(sales) OVER(
+	SUM(sales) OVER (
 		PARTITION BY
 			productid,
 			orderstatus
@@ -85,7 +85,10 @@ SELECT
 	orderid,
 	orderdate,
 	sales,
-	RANK() OVER(ORDER BY sales DESC) AS rank_sales
+	RANK() OVER (
+		ORDER BY 
+			sales DESC
+		) AS rank_sales
 FROM orders;
 
 
@@ -96,7 +99,7 @@ SELECT
 	orderdate,
 	orderstatus,
 	sales,
-	SUM(sales) OVER(
+	SUM(sales) OVER (
 		PARTITION BY 
 			orderstatus
 		ORDER BY
@@ -110,7 +113,7 @@ SELECT
 	orderdate,
 	orderstatus,
 	sales,
-	SUM(sales) OVER(
+	SUM(sales) OVER (
 		PARTITION BY 
 			orderstatus
 		ORDER BY
@@ -133,7 +136,7 @@ SELECT
 	orderdate,
 	orderstatus,
 	sales,
-	SUM(sales) OVER(
+	SUM(sales) OVER (
 		PARTITION BY
 			orderstatus
 		ORDER BY
@@ -149,7 +152,7 @@ SELECT
 	orderdate,
 	orderstatus,
 	sales,
-	SUM(sales) OVER(
+	SUM(sales) OVER (
 		PARTITION BY
 			orderstatus
 		ORDER BY
@@ -165,7 +168,7 @@ SELECT
 	orderdate,
 	orderstatus,
 	sales,
-	SUM(sales) OVER(
+	SUM(sales) OVER (
 		PARTITION BY
 			orderstatus
 		ORDER BY
@@ -181,7 +184,7 @@ SELECT
 	orderdate,
 	orderstatus,
 	sales,
-	SUM(sales) OVER(
+	SUM(sales) OVER (
 		PARTITION BY
 			orderstatus
 		ORDER BY
@@ -197,7 +200,7 @@ SELECT
 	orderdate,
 	orderstatus,
 	sales,
-	SUM(sales) OVER(
+	SUM(sales) OVER (
 		PARTITION BY
 			orderstatus
 		ORDER BY
@@ -216,13 +219,13 @@ SELECT
 	orderdate,
 	orderstatus,
 	sales,
-	SUM(sales) OVER(
+	SUM(sales) OVER (
 		PARTITION BY
 			orderstatus
 	) AS total_sales
 FROM orders
 ORDER BY
-	SUM(sales) OVER(
+	SUM(sales) OVER (
 		PARTITION BY
 			orderstatus
 	) DESC;
@@ -237,10 +240,10 @@ SELECT
 	orderdate,
 	orderstatus,
 	sales,
-	SUM(SUM(sales) OVER(
+	SUM(SUM(sales) OVER (
 		PARTITION BY
 			orderstatus
-	)) OVER(
+	)) OVER (
 		PARTITION BY
 			orderstatus
 	) AS total_sales
@@ -257,7 +260,7 @@ SELECT
 	orderstatus,
 	productid,
 	sales,
-	SUM(sales) OVER(
+	SUM(sales) OVER (
 		PARTITION BY
 			orderstatus
 	) AS total_sales
@@ -274,7 +277,7 @@ WHERE
 SELECT
 	customerid,
 	SUM(sales) AS total_sales,
-	RANK() OVER(
+	RANK() OVER (
 		ORDER BY
 			SUM(sales) DESC
 	) AS rank_customers

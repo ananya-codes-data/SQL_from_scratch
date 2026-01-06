@@ -24,7 +24,10 @@ FROM orders;
 
 -- Find the average sales of all orders
 SELECT
-	ROUND(AVG(sales), 0) AS avg_sales
+	ROUND(
+		AVG(sales),
+		0
+	) AS avg_sales
 FROM orders;
 
 -- Find the highest score among customers
@@ -44,7 +47,10 @@ SELECT
 	customerid,
 	COUNT(*) AS noof_orders,
 	SUM(sales) AS total_sales,
-	ROUND(AVG(sales), 0) AS avg_sales,
+	ROUND(
+		AVG(sales), 
+		0
+	) AS avg_sales,
 	MAX(sales) AS highest_sales,
 	MIN(sales) AS lowest_sales
 FROM orders

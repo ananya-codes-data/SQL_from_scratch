@@ -18,8 +18,15 @@ SELECT
 	customerid,
 	score,
 	COALESCE(score, 0) AS score_2,
-	ROUND(AVG(score) OVER(), 0) AS avg_scores,
-	ROUND(AVG(COALESCE(score, 0)) OVER ()) AS avg_score_2
+	ROUND(
+		AVG(score) OVER (),
+		0
+	) AS avg_scores,
+	ROUND(
+		AVG(
+			COALESCE(score, 0)
+		) OVER ()
+	) AS avg_score_2
 FROM customers;
 
 
@@ -118,6 +125,12 @@ SELECT
 	*,
 	LENGTH(category) AS category_length,
 	TRIM(category) AS data_policy1,
-	NULLIF(TRIM(category), '') AS data_policy2,
-	COALESCE(NULLIF(TRIM(category), ''), 'unknown') AS data_policy3
+	NULLIF(
+		TRIM(category), ''
+	) AS data_policy2,
+	COALESCE(
+		NULLIF(
+			TRIM(category), ''
+		), 'unknown'
+	) AS data_policy3
 FROM orders;

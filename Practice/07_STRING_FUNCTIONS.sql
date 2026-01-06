@@ -48,7 +48,9 @@ FROM customers;
 SELECT
 	first_name,
     LENGTH(first_name) AS length_name,
-    LENGTH(TRIM(first_name)) AS trimmed_length_name,
+    LENGTH(
+		TRIM(first_name)
+	) AS trimmed_length_name,
     LENGTH(first_name) - LENGTH(TRIM(first_name)) AS diff
 FROM customers
 WHERE 
@@ -88,7 +90,10 @@ FROM customers;
 -- Retrieve the first two characters of each first name
 SELECT
 	first_name,
-    LEFT(TRIM(first_name), 2) AS first_2_char
+    LEFT(
+		TRIM(first_name),
+		2
+	) AS first_2_char
 FROM customers;
 
 -- Retrieve the last two characters of each first name
@@ -103,7 +108,11 @@ FROM customers;
 -- Retrieve a list of customers' first names after removing the first character
 SELECT
 	first_name,
-    SUBSTRING(TRIM(first_name), 2, LENGTH(first_name)) AS sub_name
+    SUBSTRING(
+		TRIM(first_name), 
+		2, 
+		LENGTH(first_name)
+	) AS sub_name
 FROM customers;
 
 
@@ -112,7 +121,11 @@ FROM customers;
 -- Nesting
 SELECT
 	first_name,
-    SUBSTRING(TRIM(first_name), 2, LENGTH(first_name)) AS sub_name
+    SUBSTRING(
+		TRIM(first_name),
+		2, 
+		LENGTH(first_name)
+	) AS sub_name
 FROM customers;
 
 -- We call it nesting when we use more than one function together to get the result that we need

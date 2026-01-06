@@ -78,7 +78,9 @@ GROUP BY
 SELECT
 	orderid,
 	creationtime,
-	CAST(DATE_TRUNC('month', creationtime) + interval '1 month - 1 day' AS DATE) AS EOMONTH
+	CAST(
+		DATE_TRUNC('month', creationtime) + interval '1 month - 1 day' AS DATE
+	) AS EOMONTH
 FROM orders;
 
 /* DATE_TRUNC('month', creationtime) - this gives the first day of the month
@@ -226,14 +228,19 @@ in the last and the CAST aliases in the first */
 SELECT
 	employeeid,
 	birthdate,
-	AGE(NOW(), birthdate) AS employees_age
+	AGE(
+		NOW(), birthdate
+	) AS employees_age
 FROM employees;
 
 /* TASK 16:
    Find the average shipping duration in days for each month */
 SELECT
 	DATE_PART('month', orderdate) AS order_date,
-	ROUND(AVG(shipdate - orderdate),0) AS avg_shipping_duration
+	ROUND(
+		AVG(shipdate - orderdate),
+		0
+	) AS avg_shipping_duration
 FROM orders
 GROUP BY
 	DATE_PART('month', orderdate);
@@ -243,8 +250,16 @@ GROUP BY
 SELECT
 	orderid,
 	orderdate AS current_order_date,
-	LAG(orderdate) OVER (ORDER BY orderdate) AS previous_order_date,
-	ABS(LAG(orderdate) OVER (ORDER BY orderdate) - orderdate) AS no_of_days
+	LAG(orderdate) OVER (
+		ORDER BY 
+			orderdate
+		) AS previous_order_date,
+	ABS(
+		LAG(orderdate) OVER (
+			ORDER BY 
+				orderdate
+			) - orderdate
+		) AS no_of_days
 FROM orders;
 
 /* Used ABS(absolute) in the above query so that
@@ -297,8 +312,7 @@ SELECT
 		WHEN IS_DATE(orderdate) = true THEN CAST(orderdate AS DATE)
 		ELSE '9999-01-01'
 	END AS neworderdate
-FROM
-(
+FROM (
 	SELECT
 		'2025-08-20' AS orderdate
 	UNION

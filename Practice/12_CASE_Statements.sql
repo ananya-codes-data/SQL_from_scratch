@@ -27,7 +27,7 @@ FROM (
 			ELSE 'Low'
 		END AS category
 	FROM orders
-	) AS t
+) AS t
 GROUP BY
 	category
 ORDER BY
@@ -112,7 +112,7 @@ SELECT
 	ROUND(
 		AVG(score) OVER (), 
 		0
-		) AS avg_customer
+	) AS avg_customer
 FROM customers;
 
 -- CONDITIONAL AGGREGATION
@@ -121,11 +121,12 @@ FROM customers;
    Count how many orders each customer made with sales greater than 30 */
 SELECT
 	customerid,
-	SUM(CASE
+	SUM(
+		CASE
 			WHEN sales > 30 THEN 1
 			ELSE 0
 		END
-		) AS total_orders_highsales,
+	) AS total_orders_highsales,
 	COUNT(*) AS total_orders
 FROM orders
 GROUP BY
