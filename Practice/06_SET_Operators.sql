@@ -51,7 +51,7 @@
         col.2
    FROM database.table_name; 
    
-   The number of columns should be equal orelse there will be error */
+   The number of columns should be equal orelse there will be an error */
 
 
 /* # 3: RULE: Data Types:
@@ -90,7 +90,7 @@
    where as in the second query the col.1 has an INTEGER type while in col.2 it's a VARCHAR type
    
    In MySQL you would get a result for the above query as it does not follow strict SQL standards
-   but in postgreSQL and SQL Server it would clearly show an error because they collow strict SQL standards */
+   but in postgreSQL and SQL Server it would clearly show an error because they follow strict SQL standards */
 
 
 /* # 4: RULE: Column Order:
@@ -121,8 +121,9 @@
         col.2 - VARCHAR
    FROM database.table_name
    
-   The above query would show an error as SQL maps the column of the first query with the first column of the second query
-   and maps the second column of the first query with the second column of the second query 
+   The above query would show an error as SQL maps the column of the first query 
+   with the first column of the second query and maps the second column 
+   of the first query with the second column of the second query 
    and the data types of columns of the queries are not same and SQL cannot identify the columns
    so the columns need to be in order */
 
@@ -132,9 +133,9 @@
    specified in the first SELECT statement
    
    The 1st query controls the naming of the columns in the output
-   So if you want to put AS do it in the 1st query and it will reflect in the output 
-   If I apply AS in the 2nd query it will not reflect in the output as the 1st query is the primary query 
-   The 1st query also controls the DATA types */
+   So if you want to put Alias, do it in the 1st query and it will reflect in the output 
+   If I apply Alias in the 2nd query it will not reflect in the output as
+   the 1st query is the primary query. The 1st query also controls the DATA types */
 
 
 /* # 6: RULE: Correct Columns:
