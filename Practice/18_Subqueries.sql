@@ -257,7 +257,34 @@ FROM orders;
 
 /* TASK 11:
    Show the details of orders made by customers in Germany */
-
+-- Main Query
+SELECT
+*
+FROM orders AS o
+WHERE
+	EXISTS (
+		SELECT
+		1
+		FROM customers AS c
+		WHERE
+			country = 'Germany'
+			AND
+			o.customerid = c.customerid
+);
 
 /* TASK 12:
    Show the details of orders made by customers not in Germany */
+-- Main Query
+SELECT
+*
+FROM orders AS o
+WHERE
+	NOT EXISTS (
+		SELECT
+		1
+		FROM customers AS c
+		WHERE
+			country = 'Germany'
+			AND
+			o.customerid = c.customerid
+);
