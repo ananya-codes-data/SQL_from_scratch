@@ -124,7 +124,7 @@ Used to store **images, files, raw data**
 
 ### 6️⃣ Special / Advanced Data Types (DB-specific)
 
-#### PostgreSQL Examples:
+#### PostgreSQL Examples
 
 | Data Type        | Use                           |
 | ---------------- | ----------------------------- |
